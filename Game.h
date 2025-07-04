@@ -16,11 +16,12 @@ private:
         currentTurn = (currentTurn == Color::White) ? Color::Black : Color::White;
     }
 
-    bool processMove(const std::string& move);
+    bool processMove(const string& move);
 
 public:
     Game() : currentTurn(Color::White) {}
 
     void run();
+    tuple<int, int, int, int> getBestMove(Color aiColor);
 };
 #pragma once

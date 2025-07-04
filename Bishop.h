@@ -3,13 +3,13 @@
 #define BISHOP_H
 
 #include "Piece.h"
+#include "Board.h"
 
 class Bishop : public Piece {
 public:
     Bishop(Color c);
-
-    std::string getName() const override;
-    bool isValidMove(int sx, int sy, int dx, int dy) const override;
+    string getName() const override;
+    bool isValidMove(int sx, int sy, int dx, int dy, const Board& board) const override;
 };
 
 #endif

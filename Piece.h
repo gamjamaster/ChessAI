@@ -5,22 +5,24 @@
 #include <string>
 using namespace std;
 
-enum class Color {White, Black};
+enum class Color { White, Black };
 
-class Piece{
-	protected:
-		Color color;
-		char symbol;
+class Board;
 
-	public:
-		Piece(Color c, char s) : color(c), symbol(s) {}
-		virtual ~Piece() {}
+class Piece {
+protected:
+    Color color;
+    char symbol;
 
-		virtual string getName() const = 0;
-		virtual bool isValidMove(int sx, int sy, int dx, int dy) const = 0;
+public:
+    Piece(Color c, char s) : color(c), symbol(s) {}
+    virtual ~Piece() {}
 
-		Color getColor() const { return color; }
-		char getSymbol() const { return symbol; }
+    virtual string getName() const = 0;
+    virtual bool isValidMove(int sx, int sy, int dx, int dy, const Board& board) const = 0;
+
+    Color getColor() const { return color; }
+    char getSymbol() const { return symbol; }
 };
 
 #endif

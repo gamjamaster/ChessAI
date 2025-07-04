@@ -1,25 +1,7 @@
-#pragma once
-#include <iostream>
-#include <string>
-#include "Board.h"
+#include "Game.h"
 
-class Game {
-private:
-	Board board;
-	Color currentTurn;
-
-	void printBoard() const {
-		board.print();
-	}
-
-	void switchTurn() {
-		currentTurn = (currentTurn == Color::White) ? Color::Black : Color
-	}
-
-	bool processMove(const string& move);
-
-public:
-	Game() : currentTurn(Color::White){}
-
-	void run();
-};
+int main() {
+    Game game;
+    game.run();
+    return 0;
+}

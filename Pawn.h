@@ -8,7 +8,7 @@ class Pawn : public Piece {
 		Pawn(Color c);
 
 		string getName() const override;
-		bool isValidMove(int sx, int sy, int dx, int dy) const override;
+		bool isValidMove(int sx, int sy, int dx, int dy, const Board& board) const override;
 };
 
 #endif
