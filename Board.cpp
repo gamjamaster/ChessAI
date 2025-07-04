@@ -8,9 +8,13 @@
 #include <iostream>
 
 Board::Board() {
-	squares.resize(8, vector<unique_ptr<Piece>>(8, nullptr));
+	squares.resize(8);
+	for (int i = 0; i < 8; ++i) {
+		squares[i].resize(8);
+	}
 	initialize();
 }
+
 
 void Board::initialize() {
 	for (int i = 0; i < 8; i++) {
@@ -18,27 +22,25 @@ void Board::initialize() {
 		squares[6][i] = make_unique<Pawn>(Color::White);
 	}
 
-	vector<unique_ptr<Piece>> blackPieces = {
-		make_unique<Rook>(Color::Black),
-		make_unique<Knight>(Color::Black),
-		make_unique<Bishop>(Color::Black),
-		make_unique<Queen>(Color::Black),
-		make_unique<King>(Color::Black),
-		make_unique<Bishop>(Color::Black),
-		make_unique<Knight>(Color::Black),
-		make_unique<Rook>(Color::Black),
-	};
+	vector<unique_ptr<Piece>> blackPieces;
+	blackPieces.emplace_back(make_unique<Rook>(Color::Black));
+	blackPieces.emplace_back(make_unique<Knight>(Color::Black));
+	blackPieces.emplace_back(make_unique<Bishop>(Color::Black));
+	blackPieces.emplace_back(make_unique<Queen>(Color::Black));
+	blackPieces.emplace_back(make_unique<King>(Color::Black));
+	blackPieces.emplace_back(make_unique<Bishop>(Color::Black));
+	blackPieces.emplace_back(make_unique<Knight>(Color::Black));
+	blackPieces.emplace_back(make_unique<Rook>(Color::Black));
 
-	vector<unique_ptr<Piece>> whitePieces = {
-		make_unique<Rook>(Color::White),
-		make_unique<Knight>(Color::White),
-		make_unique<Bishop>(Color::White),
-		make_unique<Queen>(Color::White),
-		make_unique<King>(Color::White),
-		make_unique<Bishop>(Color::White),
-		make_unique<Knight>(Color::White),
-		make_unique<Rook>(Color::White),
-	};
+	vector<unique_ptr<Piece>> whitePieces;
+	whitePieces.emplace_back(make_unique<Rook>(Color::White));
+	whitePieces.emplace_back(make_unique<Knight>(Color::White));
+	whitePieces.emplace_back(make_unique<Bishop>(Color::White));
+	whitePieces.emplace_back(make_unique<Queen>(Color::White));
+	whitePieces.emplace_back(make_unique<King>(Color::White));
+	whitePieces.emplace_back(make_unique<Bishop>(Color::White));
+	whitePieces.emplace_back(make_unique<Knight>(Color::White));
+	whitePieces.emplace_back(make_unique<Rook>(Color::White));
 
 	for (int i = 0; i < 8; i++) {
 		squares[0][i] = move(blackPieces[i]);
